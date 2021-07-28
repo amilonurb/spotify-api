@@ -1,2 +1,2 @@
 # spotify-api
-Brincando um pouco com a API do Spotify
+Brincando um pouco com as APIs do Spotify
