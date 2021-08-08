@@ -4,7 +4,8 @@ using System.Threading.Tasks;
 
 namespace SpotifyWebAPI.Controllers
 {
-    [Route("api/auth")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/auth")]
     [ApiController]
     public class AuthController : ControllerBase
     {
@@ -12,8 +13,15 @@ namespace SpotifyWebAPI.Controllers
 
         public AuthController(IGetTokenService getTokenService) => _getTokenService = getTokenService;
 
+        /// <summary>
+        /// Retorna um token de usuário
+        /// </summary>
+        /// <param name="userCode">Código obtido após a autorização do usuário</param>
+        /// <remarks>
+        /// Como obter o código do usuário: https://developer.spotify.com/documentation/general/guides/authorization-guide/
+        /// </remarks>
         [HttpPost("token")]
-        public async Task<IActionResult> GetToken(string userCode) =>
+        public async Task<IActionResult> GetToken([FromRoute] string userCode) =>
             Ok(await _getTokenService.ExecuteAsync(userCode));
     }
 }

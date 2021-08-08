@@ -1,42 +1,35 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
+using SpotifyWebAPI.Configurations.Extensions;
 using SpotifyWebAPI.IoC;
 
 namespace SpotifyWebAPI
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
         public IConfiguration Configuration { get; }
+
+        public Startup(IConfiguration configuration) => Configuration = configuration;
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "SpotifyWebAPI", Version = "v1" });
-            });
+            services.AddMyApiVersioning();
 
-            services.AddDependencies();
+            services.AddMySwaggerGen();
+
+            services.AddMyDependencies();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SpotifyWebAPI v1"));
-            }
 
             app.UseHttpsRedirection();
 
@@ -44,9 +37,17 @@ namespace SpotifyWebAPI
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
+            app.UseEndpoints(endpoints => endpoints.MapControllers());
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(options =>
             {
-                endpoints.MapControllers();
+                foreach (var description in provider.ApiVersionDescriptions)
+                {
+                    options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json",
+                                            description.GroupName.ToUpperInvariant());
+                }
             });
         }
     }
