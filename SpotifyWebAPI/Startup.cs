@@ -23,7 +23,7 @@ namespace SpotifyWebAPI
 
             services.AddMySwaggerGen();
 
-            services.AddMyDependencies();
+            services.AddMyDependencies(Configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
