@@ -7,13 +7,13 @@ namespace SpotifyWebAPI.Application.Services.Token.Get
         [JsonPropertyName("access_token")]
         public string AccessToken { get; set; }
 
-        [JsonPropertyName("access_token")]
+        [JsonPropertyName("token_type")]
         public string TokenType { get; set; }
 
-        [JsonPropertyName("access_token")]
-        public string ExpiresIn { get; set; }
+        [JsonPropertyName("expires_in")]
+        public int ExpiresIn { get; set; }
 
-        [JsonPropertyName("access_token")]
+        [JsonPropertyName("refresh_token")]
         public string RefreshToken { get; set; }
     }
 }

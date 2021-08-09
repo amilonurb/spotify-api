@@ -21,7 +21,19 @@ namespace SpotifyWebAPI.Controllers
         /// Como obter o código do usuário: https://developer.spotify.com/documentation/general/guides/authorization-guide/
         /// </remarks>
         [HttpPost("token")]
-        public async Task<IActionResult> GetToken([FromRoute] string userCode) =>
+        public async Task<IActionResult> GetToken([FromBody] string userCode) =>
             Ok(await _getTokenService.ExecuteAsync(userCode));
+
+        [HttpGet("callback")]
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public IActionResult AuthCallback([FromQuery] string code, [FromQuery] string state, [FromQuery] string error)
+        {
+            if (error is not null)
+            {
+                return BadRequest(new { state, error });
+            }
+
+            return Ok(new { code, state });
+        }
     }
 }
