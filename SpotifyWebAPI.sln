@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpotifyWebAPI", "SpotifyWebAPI\SpotifyWebAPI.csproj", "{19645F7A-CF65-49C6-939B-78EB47BC390D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyWebAPI.Application", "SpotifyWebAPI.Application\SpotifyWebAPI.Application.csproj", "{D46735BB-0A40-4818-88F7-FACEC76470D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpotifyWebAPI.Application", "SpotifyWebAPI.Application\SpotifyWebAPI.Application.csproj", "{D46735BB-0A40-4818-88F7-FACEC76470D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyWebAPI.Services", "SpotifyWebAPI.Services\SpotifyWebAPI.Services.csproj", "{DAF9FFEE-424C-4B99-81F0-9165A01CC770}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpotifyWebAPI.Services", "SpotifyWebAPI.Services\SpotifyWebAPI.Services.csproj", "{DAF9FFEE-424C-4B99-81F0-9165A01CC770}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyWebAPI.IoC", "SpotifyWebAPI.IoC\SpotifyWebAPI.IoC.csproj", "{5574EA1D-89E5-4BDC-B66F-1F74C2F84C0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpotifyWebAPI.IoC", "SpotifyWebAPI.IoC\SpotifyWebAPI.IoC.csproj", "{5574EA1D-89E5-4BDC-B66F-1F74C2F84C0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpotifyWebAPI.Shared", "SpotifyWebAPI.Shared\SpotifyWebAPI.Shared.csproj", "{57EBFDB0-5256-4428-965C-136596F440F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{5574EA1D-89E5-4BDC-B66F-1F74C2F84C0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5574EA1D-89E5-4BDC-B66F-1F74C2F84C0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5574EA1D-89E5-4BDC-B66F-1F74C2F84C0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57EBFDB0-5256-4428-965C-136596F440F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57EBFDB0-5256-4428-965C-136596F440F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57EBFDB0-5256-4428-965C-136596F440F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57EBFDB0-5256-4428-965C-136596F440F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
